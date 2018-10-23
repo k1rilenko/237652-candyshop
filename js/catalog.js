@@ -19,7 +19,10 @@
     catalog.classList.remove('catalog__cards--load');
     catalogLoadMessage.classList.add('visually-hidden');
   }
-
+  function emptyMessageClose() {
+    cartGoods.classList.remove('goods__cards--empty');
+    cartGoodsEmpty.classList.add('visually-hidden');
+  }
 
   function getSingleCard(good) {
     var card = cardTemplate.cloneNode(true);
@@ -68,13 +71,9 @@
     return card;
   }
 
-  function emptyMessageClose() {
-    cartGoods.classList.remove('goods__cards--empty');
-    cartGoodsEmpty.classList.add('visually-hidden');
-  }
   function getAllCards(card) {
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i < window.dataModule.DATA_VALUE.COUNT; i++) {
+    for (var i = 0; i < card.length; i++) {
       fragment.appendChild(getSingleCard(card[i]));
     }
     catalog.appendChild(fragment);
